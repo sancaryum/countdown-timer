@@ -4,8 +4,8 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 
 
 const App = () => {
-  const [count, setCount] = useState(50);
-
+  const [count, setCount] = useState(10);
+  
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>Count: {count}</Text>
@@ -13,17 +13,26 @@ const App = () => {
       <Button
         title="Start"
         onPress={() => {
-          console.log("Pressed to start")
-          //count değerini her saniye 1 azaltacak(setCount ile) metod buraya gelecek
-         // setInterval(console.log("say"), 1000);
 
+          setCount(10);
+          var newYearCountdown = setInterval(function () {
+            console.log("Değer: " + count);
+            //SORUN BURADA SET COUNT METODU COUNT'UN DEĞERİNİ AZALTMIYOR
+            setCount(count-1);
+            if (count === 0) {
+              console.log("Finished");
+              clearInterval(newYearCountdown);
+            }
+          }, 1000);
+
+          
+          console.log("bitti kankam")
         }}></Button>
 
       <Button
         title="Reset"
         onPress={() => {
-          console.log("Pressed to reset")
-          //count değerini setCount ile başlangıç değerine çevirecek metod
+          
         }}
       ></Button>
     </View>
