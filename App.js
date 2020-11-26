@@ -1,21 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
-export default function App() {
+
+
+const App = () => {
+  const [count, setCount] = useState(50);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.textStyle}>Count: {count}</Text>
+      
+      <Button
+        title="Start"
+        onPress={() => {
+          console.log("Pressed to start")
+          //count değerini her saniye 1 azaltacak(setCount ile) metod buraya gelecek
+         // setInterval(console.log("say"), 1000);
+
+        }}></Button>
+
+      <Button
+        title="Reset"
+        onPress={() => {
+          console.log("Pressed to reset")
+          //count değerini setCount ile başlangıç değerine çevirecek metod
+        }}
+      ></Button>
     </View>
   );
-}
+
+
+};
+
+
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 300,
+    marginLeft: 65,
   },
+  textStyle: {
+    color: 'black',
+  },
+
 });
+
+export default App;
